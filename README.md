@@ -18,12 +18,45 @@ A minimal operating system kernel written in C for the x86 architecture, designe
 
 ## Prerequisites
 
-Install the required tools on WSL2:
+### Linux (Debian/Ubuntu/WSL2)
 
 ```bash
 sudo apt update
 sudo apt install build-essential nasm qemu-system-x86
 ```
+
+### Linux (Fedora/RHEL/CentOS)
+
+```bash
+sudo dnf groupinstall "Development Tools"
+sudo dnf install nasm qemu-system-x86
+```
+
+### Linux (Arch/Manjaro)
+
+```bash
+sudo pacman -S base-devel nasm qemu-system-x86
+```
+
+### macOS
+
+Install Homebrew if you haven't already:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Then install the required tools:
+```bash
+brew install nasm qemu
+```
+
+**Note for macOS**: You may need to install the i386-elf cross-compiler toolchain for proper linking:
+```bash
+brew tap nativeos/i386-elf-toolchain
+brew install i386-elf-binutils i386-elf-gcc
+```
+
+Alternatively, use the system toolchain with appropriate flags (already configured in the Makefile).
 
 ## Project Structure
 
